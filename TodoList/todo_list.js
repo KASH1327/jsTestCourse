@@ -6,11 +6,10 @@ const clearCompletedBtn = document.getElementById("clearCompletedBtn");
 let tasks = [];
 
 function addTask() {
-    const taskText = taskInput.ariaValueMax.trim();
+    const taskText = taskInput.value.trim();
     if (taskText !== "") {
         tasks.push({text: taskText});
         taskInput.value = "";
-        addTaskBtn.addEventListener("click", addTask);
         displayTasks();
     }
 }
@@ -33,6 +32,8 @@ function toggleTask(index) {
 
 function clearCompletedTasks() {
     tasks = tasks.filter(task => !task.completed);
-    clearCompletedBtn.addEventListener("click", clearCompletedTasks);
     displayTasks();
 }
+
+addTaskBtn.addEventListener("click", addTask);
+clearCompletedBtn.addEventListener("click", clearCompletedTasks);
